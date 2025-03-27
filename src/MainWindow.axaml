@@ -1,0 +1,48 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="using:DataGridPerformance"
+        xmlns:sys="using:System"
+        mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+        x:Class="DataGridPerformance.MainWindow"
+        Title="DataGridPerformance" Width="800" Height="450" WindowState="Maximized">
+    
+    <Window.DataContext>
+        <local:MainViewModel/>
+    </Window.DataContext>
+    
+    <Window.Styles>
+        <Style Selector="DataGridCell">
+            <Setter Property="FontSize" Value="12"/>
+        </Style>
+    </Window.Styles>
+    
+	<Grid RowDefinitions="Auto, *">
+        <StackPanel>
+			<TextBlock x:Name="textBlock" Text="..." FontSize="20" HorizontalAlignment="Center"/>
+
+			<Grid ColumnDefinitions="Auto, Auto, Auto, Auto" Margin="0,8,0,0" HorizontalAlignment="Center">
+				<TextBlock Text="Item Count: " VerticalAlignment="Center" Margin="0,0,4,0"/>
+				<ComboBox x:Name="itemsComboBox" ItemsSource="{Binding ItemCounts}" SelectedItem="{Binding SelectedItemCount}" 
+                          Grid.Column="1" MinWidth="140"/>
+                    
+				<TextBlock Text="Column Types: " VerticalAlignment="Center" Grid.Column="2" Margin="8,0,4,0"/>
+                <ComboBox ItemsSource="{Binding ColumnTypes}" DisplayMemberBinding="{Binding Text}" SelectedItem="{Binding SelectedColumnType}"
+                          Grid.Column="3" MinWidth="140"/>
+			</Grid>
+            
+            <StackPanel HorizontalAlignment="Center" Orientation="Horizontal" Margin="0,8,0,0">
+                <Button Content="Create EMX GridControl" Click="Button_Click_1"/>
+                <TextBlock Text="or" VerticalAlignment="Center" Margin="8,0"/>
+                <Button Content="Create Avalonia DataGrid" Click="Button_Click_2" IsEnabled="{Binding SelectedColumnType.DataGridSupported}"/>
+            </StackPanel>
+
+            <Button Content="Scroll Down" Click="Button_Click_3" IsEnabled="{Binding #contentPresenter.Content, Converter={x:Static ObjectConverters.IsNotNull}}" HorizontalAlignment="Center" Margin="0,8"/>
+            
+            <Button Content="Clear" Click="Button_Click_4" HorizontalAlignment="Center" IsEnabled="{Binding #contentPresenter.Content, Converter={x:Static ObjectConverters.IsNotNull}}"/>
+        </StackPanel>
+        
+        <ContentPresenter x:Name="contentPresenter" Grid.Row="1"/>
+	</Grid>
+</Window>

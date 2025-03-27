@@ -1,0 +1,24 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>net6.0</TargetFramework>
+    <Nullable>disable</Nullable>
+    <BuiltInComInteropSupport>true</BuiltInComInteropSupport>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Avalonia" Version="11.2.5" />
+    <PackageReference Include="Avalonia.Controls.DataGrid" Version="11.2.5" />
+    <PackageReference Include="Avalonia.Desktop" Version="11.2.5" />
+    <!--Condition below is needed to remove Avalonia.Diagnostics package from build output in Release configuration.-->
+    <PackageReference Condition="'$(Configuration)' == 'Debug'" Include="Avalonia.Diagnostics" Version="11.2.5" />
+    <PackageReference Include="Avalonia.Svg.Skia" Version="11.2.0.2" />
+    <PackageReference Include="Avalonia.Themes.Fluent" Version="11.2.5" />
+    <PackageReference Include="XamlNameReferenceGenerator" Version="1.3.4" />
+
+    <!--<PackageReference Include="Eremex.Avalonia.Controls" Version="1.0.98" />
+    <PackageReference Include="Eremex.Avalonia.Themes.DeltaDesign" Version="1.0.98" />-->
+    <PackageReference Include="Eremex.Avalonia.Controls" Version="1.1.112" />
+    <PackageReference Include="Eremex.Avalonia.Themes.DeltaDesign" Version="1.1.112" />
+  </ItemGroup>
+</Project>
