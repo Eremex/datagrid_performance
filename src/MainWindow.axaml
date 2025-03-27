@@ -20,7 +20,7 @@
     
 	<Grid RowDefinitions="Auto, *">
         <StackPanel>
-			<TextBlock x:Name="textBlock" Text="..." FontSize="20" HorizontalAlignment="Center"/>
+			<TextBlock x:Name="textBlock" FontSize="20" HorizontalAlignment="Center"/>
 
 			<Grid ColumnDefinitions="Auto, Auto, Auto, Auto" Margin="0,8,0,0" HorizontalAlignment="Center">
 				<TextBlock Text="Item Count: " VerticalAlignment="Center" Margin="0,0,4,0"/>

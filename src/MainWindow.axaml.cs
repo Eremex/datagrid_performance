@@ -134,7 +134,7 @@ namespace DataGridPerformance
             if (!stopwatch.IsRunning)
             {
                 scrollViewer.ScrollToHome();
-                textBlock.Text = "...";
+                textBlock.Text = string.Empty;
                 UpdateLayout();
                 stopwatch.Start();
             }
@@ -160,7 +160,7 @@ namespace DataGridPerformance
                 scrollBar.Value = 0;
                 scrollBarOnScroll.Invoke(scrollBar, new object[] { ScrollEventType.ThumbTrack });
                 UpdateLayout();
-                textBlock.Text = "...";
+                textBlock.Text = string.Empty;
                 stopwatch.Start();
             }
             if (scrollBar.Value < scrollBar.Maximum)
@@ -179,7 +179,7 @@ namespace DataGridPerformance
 
         void Button_Click_4(object sender, RoutedEventArgs e)
         {
-            textBlock.Text = "...";
+            textBlock.Text = string.Empty;
             contentPresenter.Content = null;
             GC.Collect();
         }
